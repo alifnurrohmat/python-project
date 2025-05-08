@@ -1,5 +1,6 @@
-#  Bismillahirrah`manirrahim
-dt = []  # list nyimpen data siswa
+# Bismillahirrahmanirrahim
+data_siswa = []  # list nyimpen data siswa
+
 while True:
     print("\n>>> Program Data Siswa <<<")
     print("1. Tambah Siswa🧑‍💻")
@@ -8,71 +9,73 @@ while True:
     print("4. Hapus Siswa🙅")
     print("5. Keluar🏃")
     pilihan = input("Masukkan pilihan: ")
+
     if pilihan == "1":
         # tambah siswa
-        n = input("Masukkan nama siswa: ")
-        u = input("Masukkan umur siswa: ")
+        nama = input("Masukkan nama siswa: ")
+        umur = input("Masukkan umur siswa: ")
+        rata_rata = input("Masukkan nilai rata-rata siswa: ")
         # tambahkan ke data
-        dt.append({"nama": n, "umur": u})
+        data_siswa.append({"nama": nama, "umur": umur, "rata_rata": rata_rata})
         print("Siswa berhasil ditambahkan")
-        
+
     elif pilihan == "2":
         # lihat semua siswa
-        if len(dt) == 0:
+        if len(data_siswa) == 0:
             print("Belum ada data siswa")
         else:
             print("\nDaftar Siswa:")
-            for i, s in enumerate(dt, start=1):
-                print(str(i) + ". " + s['nama'] + " (" + s['umur'] + " tahun)")
-        
+            for nomor, siswa in enumerate(data_siswa, start=1):
+                print(f"{nomor}. {siswa['nama']} ({siswa['umur']} tahun) - Rata-rata: {siswa['rata_rata']}")
+
     elif pilihan == "3":
         # edit data siswa
-        if len(dt) == 0:
+        if len(data_siswa) == 0:
             print("Data kosong, gak ada yang di-edit")
         else:
             print("\nDaftar Siswa:")
-            for i, s in enumerate(dt, start=1):
-                print(str(i) + ". " + s['nama'] + " (" + s['umur'] + " tahun)")
-            # pilih nomor yg mau diedit
+            for nomor, siswa in enumerate(data_siswa, start=1):
+                print(f"{nomor}. {siswa['nama']} ({siswa['umur']} tahun) - Rata-rata: {siswa['rata_rata']}")
             try:
-                idx = int(input("Pilih nomor siswa yang akan diedit: "))
-                if 1 <= idx <= len(dt):
-                    nm_baru = input("Nama baru (tekan Enter jika tidak diubah): ")
+                indeks = int(input("Pilih nomor siswa yang akan diedit: "))
+                if 1 <= indeks <= len(data_siswa):
+                    nama_baru = input("Nama baru (tekan Enter jika tidak diubah): ")
                     umur_baru = input("Umur baru (tekan Enter jika tidak diubah): ")
-                    if nm_baru != "":
-                        dt[idx-1]["nama"] = nm_baru  # ganti nama
+                    rata_rata_baru = input("Rata-rata baru (tekan Enter jika tidak diubah): ")
+                    if nama_baru != "":
+                        data_siswa[indeks-1]["nama"] = nama_baru
                     if umur_baru != "":
-                        dt[idx-1]["umur"] = umur_baru  # ganti umur
+                        data_siswa[indeks-1]["umur"] = umur_baru
+                    if rata_rata_baru != "":
+                        data_siswa[indeks-1]["rata_rata"] = rata_rata_baru
                     print("Data berhasil diperbarui")
                 else:
                     print("Pilihan tidak valid")
             except:
                 print("Input tidak valid")
-        
+
     elif pilihan == "4":
         # hapus siswa
-        if len(dt) == 0:
+        if len(data_siswa) == 0:
             print("Data kosong, gak ada yang dihapus")
         else:
             print("\nDaftar Siswa:")
-            for i, s in enumerate(dt, start=1):
-                print(str(i) + ". " + s['nama'] + " (" + s['umur'] + " tahun)")
+            for nomor, siswa in enumerate(data_siswa, start=1):
+                print(f"{nomor}. {siswa['nama']} ({siswa['umur']} tahun) - Rata-rata: {siswa['rata_rata']}")
             try:
-                idx = int(input("Pilih nomor siswa yang akan dihapus: "))
-                if 1 <= idx <= len(dt):
-                    dt.pop(idx-1)
+                indeks = int(input("Pilih nomor siswa yang akan dihapus: "))
+                if 1 <= indeks <= len(data_siswa):
+                    data_siswa.pop(indeks-1)
                     print("Data berhasil dihapus")
                 else:
                     print("Pilihan tidak valid")
             except:
                 print("Input tidak valid")
-        
+
     elif pilihan == "5":
         print("Terimakasih, Sampai jumpa kembali!!")
         break
     else:
         print("Pilihan tidak tersedia, coba lagi. Mungkin hatimu udah terhubung ke orang lain, bukan aku lagi")
-        
-        
+
 # Alhamdullillah selesaiii😎
-        
